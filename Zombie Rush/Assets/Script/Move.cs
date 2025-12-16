@@ -11,9 +11,17 @@ public class Move : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        //Add into X to make the game faster
         transform.position += new Vector3(2, 0, 0) * Time.deltaTime;    
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Destroy")) { 
+            Destroy(gameObject);
+        }
     }
 }
