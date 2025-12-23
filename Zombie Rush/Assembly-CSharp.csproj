@@ -62,6 +62,18 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Move.cs" />
     <Compile Include="Assets\Script\Triggersection.cs" />
+    <Compile Include="Assets\FastMesh\Scripts\SceneViewText.cs" />
+    <Compile Include="Assets\Supercyan Character Pack Zombie Sample\Scripts\ZombieCameraLogic.cs" />
+    <Compile Include="Assets\Script\CollisionDetector.cs" />
+    <Compile Include="Assets\Script\PlayerMovement.cs" />
+    <Compile Include="Assets\Supercyan Character Pack Zombie Sample\Scripts\ZombieFree.cs" />
+    <Compile Include="Assets\Supercyan Character Pack Zombie Sample\Scripts\ZombieCharacterControl.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\FastMesh\README.txt" />
+    <None Include="Assets\Supercyan Character Pack Zombie Sample\Shaders\Legacy\CelShader.shader" />
+    <None Include="Assets\Supercyan Character Pack Zombie Sample\Shaders\SupercyanShader.shader" />
+    <None Include="Assets\Supercyan Character Pack Zombie Sample\Shaders\SupercyanShaderLighting.cginc" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
