@@ -11,7 +11,7 @@ public class Triggersection : MonoBehaviour
         if (other.gameObject.CompareTag("Trigger"))
         {
             int randomindex = Random.Range(0, roadSection.Length);
-            Instantiate(roadSection[randomindex], new Vector3(0, 0, -12.08f), Quaternion.Euler(0,-90,0));
+            Instantiate(roadSection[randomindex], new Vector3(0, 0, -61.46f), Quaternion.identity);
         }
     }
 }
