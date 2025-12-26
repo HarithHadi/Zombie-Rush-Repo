@@ -237,13 +237,47 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6965276927511497642, guid: a5e40d8eb9e7ea840824a0bfd6a748c3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5886779106949518964}
   m_SourcePrefab: {fileID: 100100000, guid: a5e40d8eb9e7ea840824a0bfd6a748c3, type: 3}
 --- !u!4 &91132040653977430 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 923874360350411970, guid: a5e40d8eb9e7ea840824a0bfd6a748c3, type: 3}
   m_PrefabInstance: {fileID: 977710814898240404}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7870080721885147198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6965276927511497642, guid: a5e40d8eb9e7ea840824a0bfd6a748c3, type: 3}
+  m_PrefabInstance: {fileID: 977710814898240404}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5886779106949518964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7870080721885147198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b305d11aef522a458a1ccb06348db43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacles:
+  - {fileID: 4311010213305465634, guid: 84062c9556b3cef4f8aa9a210cba155b, type: 3}
+  - {fileID: 2051354519210185303, guid: bd54396f614833c4aac609531580219e, type: 3}
+  - {fileID: 4723734513448391919, guid: e3d1d514935b8c44b9d50eb75b1cccd4, type: 3}
+  zombies:
+  - {fileID: 680687126829714508, guid: fd0900d6bf5833f4b9dfc29e46dd3c8f, type: 3}
+  powerup:
+  - {fileID: 903561524138495433, guid: ba6a9b91c66f2be41a1496fc417cf92c, type: 3}
+  - {fileID: 2583653046173774615, guid: 546087121ecb61240bc9baab0a9f4d15, type: 3}
+  lanes:
+  - -3
+  - 0
+  - 3
+  obstacleCount: 2
 --- !u!1001 &1019557434913110624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1841,8 +1875,42 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6965276927511497642, guid: a5e40d8eb9e7ea840824a0bfd6a748c3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4704187586046909397}
   m_SourcePrefab: {fileID: 100100000, guid: a5e40d8eb9e7ea840824a0bfd6a748c3, type: 3}
+--- !u!1 &1026538408723525038 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6965276927511497642, guid: a5e40d8eb9e7ea840824a0bfd6a748c3, type: 3}
+  m_PrefabInstance: {fileID: 7968940630326814212}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4704187586046909397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026538408723525038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b305d11aef522a458a1ccb06348db43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacles:
+  - {fileID: 4311010213305465634, guid: 84062c9556b3cef4f8aa9a210cba155b, type: 3}
+  - {fileID: 2051354519210185303, guid: bd54396f614833c4aac609531580219e, type: 3}
+  - {fileID: 4723734513448391919, guid: e3d1d514935b8c44b9d50eb75b1cccd4, type: 3}
+  zombies:
+  - {fileID: 680687126829714508, guid: fd0900d6bf5833f4b9dfc29e46dd3c8f, type: 3}
+  powerup:
+  - {fileID: 903561524138495433, guid: ba6a9b91c66f2be41a1496fc417cf92c, type: 3}
+  - {fileID: 2583653046173774615, guid: 546087121ecb61240bc9baab0a9f4d15, type: 3}
+  lanes:
+  - -3
+  - 0
+  - 3
+  obstacleCount: 2
 --- !u!4 &7081100751686707910 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 923874360350411970, guid: a5e40d8eb9e7ea840824a0bfd6a748c3, type: 3}
