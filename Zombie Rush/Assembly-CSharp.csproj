@@ -63,8 +63,10 @@
     <Compile Include="Assets\Script\Move.cs" />
     <Compile Include="Assets\Script\Triggersection.cs" />
     <Compile Include="Assets\FastMesh\Scripts\SceneViewText.cs" />
+    <Compile Include="Assets\Script\ZombieRagdoll.cs" />
     <Compile Include="Assets\Script\SpawnObject.cs" />
     <Compile Include="Assets\Supercyan Character Pack Zombie Sample\Scripts\ZombieCameraLogic.cs" />
+    <Compile Include="Assets\Script\ZombieCollision.cs" />
     <Compile Include="Assets\Script\CollisionDetector.cs" />
     <Compile Include="Assets\Script\PlayerMovement.cs" />
     <Compile Include="Assets\Supercyan Character Pack Zombie Sample\Scripts\ZombieFree.cs" />

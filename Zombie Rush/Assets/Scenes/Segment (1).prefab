@@ -778,8 +778,7 @@ MonoBehaviour:
   - {fileID: 2123668328042113114, guid: 802c0efe3462ff9408f9032b674ae03f, type: 3}
   - {fileID: 4723734513448391919, guid: e3d1d514935b8c44b9d50eb75b1cccd4, type: 3}
   - {fileID: 559993727811554497, guid: 3a5df9f18409e7c439c513e6d67a378c, type: 3}
-  zombies:
-  - {fileID: 680687126829714508, guid: fd0900d6bf5833f4b9dfc29e46dd3c8f, type: 3}
+  zombies: {fileID: 680687126829714508, guid: fd0900d6bf5833f4b9dfc29e46dd3c8f, type: 3}
   powerup:
   - {fileID: 903561524138495433, guid: ba6a9b91c66f2be41a1496fc417cf92c, type: 3}
   - {fileID: 2583653046173774615, guid: 546087121ecb61240bc9baab0a9f4d15, type: 3}
@@ -2159,8 +2158,7 @@ MonoBehaviour:
   - {fileID: 2123668328042113114, guid: 802c0efe3462ff9408f9032b674ae03f, type: 3}
   - {fileID: 4723734513448391919, guid: e3d1d514935b8c44b9d50eb75b1cccd4, type: 3}
   - {fileID: 559993727811554497, guid: 3a5df9f18409e7c439c513e6d67a378c, type: 3}
-  zombies:
-  - {fileID: 680687126829714508, guid: fd0900d6bf5833f4b9dfc29e46dd3c8f, type: 3}
+  zombies: {fileID: 680687126829714508, guid: fd0900d6bf5833f4b9dfc29e46dd3c8f, type: 3}
   powerup:
   - {fileID: 903561524138495433, guid: ba6a9b91c66f2be41a1496fc417cf92c, type: 3}
   - {fileID: 2583653046173774615, guid: 546087121ecb61240bc9baab0a9f4d15, type: 3}

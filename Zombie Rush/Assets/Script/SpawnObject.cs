@@ -7,7 +7,7 @@ public class SpawnObject : MonoBehaviour
 {
     [Header("Prefabs")]
     public GameObject[] obstacles;
-    public GameObject[] zombies;
+    public GameObject zombies;
     public GameObject[] powerup;
 
     [Header("Settings")]
@@ -63,11 +63,12 @@ public class SpawnObject : MonoBehaviour
             }
             else
             {
-                selectedPrefab = zombies[Random.Range(0, powerup.Length)];
+                selectedPrefab = zombies;
             }
 
             float randomZ = Random.Range(-8f, 8f);
             Vector3 spawnPos = new Vector3(xPos, 0, randomZ);
+            
 
             GameObject obj = Instantiate(selectedPrefab, transform.position + spawnPos, Quaternion.identity);
             obj.transform.SetParent(this.transform);
