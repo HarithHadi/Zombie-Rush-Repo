@@ -15,7 +15,7 @@ public class Move : MonoBehaviour
     void Update()
     {
         //Add into X to make the game faster
-        transform.position += new Vector3(0, 0, 15) * Time.deltaTime;    
+        transform.position += new Vector3(0, 0, 25) * Time.deltaTime;    
     }
 
     private void OnTriggerEnter(Collider other)
