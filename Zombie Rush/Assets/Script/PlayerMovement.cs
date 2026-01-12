@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float laneSpeed = 8f;
 
     public SIDE currentSide = SIDE.Mid;
-    public Animator carAnimator;
+    //public Animator carAnimator;
 
     private float targetX;
     private bool isMoving = false;
@@ -56,12 +56,12 @@ public class PlayerMovement : MonoBehaviour
     {
         targetX = lanes[(int)currentSide];
         isMoving = true;
-        carAnimator.speed = 1.8f;
+        //carAnimator.speed = 1.8f;
 
-        if (right)
-            carAnimator.Play("CarLeftDodge", 0,0f);
-        else
-            carAnimator.Play("CarRightDodge", 0,0f);
+        //if (right)
+        //    carAnimator.Play("CarLeftDodge", 0,0f);
+        //else
+        //    carAnimator.Play("CarRightDodge", 0,0f);
     }
 
     void Move()
@@ -79,8 +79,8 @@ public class PlayerMovement : MonoBehaviour
             isMoving = false;
 
             // RESET animation
-            carAnimator.SetBool("TurnLeft", false);
-            carAnimator.SetBool("TurnRight", false);
+            //carAnimator.SetBool("TurnLeft", false);
+            //carAnimator.SetBool("TurnRight", false);
         }
     }
 }

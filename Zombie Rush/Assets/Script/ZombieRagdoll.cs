@@ -18,6 +18,8 @@ public class ZombieRagdoll : MonoBehaviour
         DisableRagdoll();
     }
 
+    
+
     void DisableRagdoll() 
     {
         Debug.Log("ragdoll disabled");
