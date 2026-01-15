@@ -5,7 +5,7 @@ public enum SIDE { Left = 0, Mid = 1, Right = 2 }
 public class PlayerMovement : MonoBehaviour
 {
     public float[] lanes = { -3f, 0f, 3f };
-    public float laneSpeed = 8f;
+    public float laneSpeed = 18f;
 
     public SIDE currentSide = SIDE.Mid;
     //public Animator carAnimator;

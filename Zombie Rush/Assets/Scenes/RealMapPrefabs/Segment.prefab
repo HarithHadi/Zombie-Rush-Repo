@@ -177,8 +177,8 @@ MonoBehaviour:
   - {fileID: 559993727811554497, guid: 3a5df9f18409e7c439c513e6d67a378c, type: 3}
   zombies: {fileID: 3224433884623310852, guid: 0b0edd96fa25fda45b21f03aef4ac17d, type: 3}
   powerup:
-  - {fileID: 903561524138495433, guid: ba6a9b91c66f2be41a1496fc417cf92c, type: 3}
-  - {fileID: 2583653046173774615, guid: 546087121ecb61240bc9baab0a9f4d15, type: 3}
+  - {fileID: 7378434367294070693, guid: b45b447e705cc7b4e99bfaf734996bfe, type: 3}
+  - {fileID: 6108286270273324089, guid: 3045ae2a3fe919c439d615162c733056, type: 3}
   obstacleCount: 10
 --- !u!1 &6985491355086542658
 GameObject:

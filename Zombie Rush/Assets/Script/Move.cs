@@ -5,17 +5,26 @@ using UnityEngine;
 public class Move : MonoBehaviour
 {
 
-    // Start is called before the first frame update
+    public int speed = 1;
+    public int speedMultiplier = 1;
     void Start()
     {
-        
+        if (SpeedBoostManager.instance != null) 
+        {
+            speed = SpeedBoostManager.getCurrentSped();
+        }
+        else 
+        {
+            speed = 1;
+        }
     }
 
     
     void Update()
     {
+        
         //Add into X to make the game faster
-        transform.position += new Vector3(0, 0, 25) * Time.deltaTime;    
+        transform.position += Vector3.forward * 25 * speed * Time.deltaTime;    
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,5 +32,10 @@ public class Move : MonoBehaviour
         if (other.gameObject.CompareTag("Destroy")) { 
             Destroy(gameObject);
         }
+    }
+
+    public void setSpeed(int newSpeed) 
+    {
+        speed = newSpeed;
     }
 }

@@ -44,7 +44,7 @@ public class SpawnObject : MonoBehaviour
                 {
                     float power = Random.Range(0f, 1.0f);
 
-                    if (power <= 0.2f && !powerupdy)
+                    if (power <= 0.1f && !powerupdy)
                     {
                         Debug.Log("spawning powerup");
                         Vector3 powerPos = new Vector3(lane, 0.65f, Zcurr);

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+
 
 public class CollisionDetector : MonoBehaviour
 {
@@ -13,17 +15,18 @@ public class CollisionDetector : MonoBehaviour
     private int maxHealth = 5;
     private int currentHealth;
     
-    public Slider slider;
+    public UnityEngine.UI.Slider slider;
     public Gradient gradient;
-    public Image fill;
+    public UnityEngine.UI.Image fill;
 
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text HighscoreText;
 
 
     public static HighScoreManager instance;
-    private float lastDistanceUpdateZ = 0f;
-    private float zTravelled = 0;
+    public GameObject Explosion;
+
+
 
     void Start()
     {
@@ -47,9 +50,20 @@ public class CollisionDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Obstacle")) {
-            Debug.Log("Hit Obstacle");
-            TakeDamage(1);
+        if (other.gameObject.CompareTag("Obstacle")) 
+        {
+            if (SpeedBoostManager.instance.IsBoostActive()) 
+            {
+                Destroy(other.gameObject);
+            }
+            else 
+            {
+                Debug.Log("Hit Obstacle");
+                Instantiate(Explosion, other.transform.position, transform.rotation);
+                TakeDamage(1);
+            }
+
+            
         }
 
         if (other.gameObject.CompareTag("Zombie"))
@@ -93,6 +107,12 @@ public class CollisionDetector : MonoBehaviour
             //TODO display game over screen
         }
     }
+    public void setHealth(int health) 
+    {
+        slider.value = health;
+        float gradientNum = (float)health/(float)maxHealth;
+        fill.color = gradient.Evaluate(gradientNum);
+    }
 
     public void setMaxHealth(int health) 
     {
@@ -101,6 +121,24 @@ public class CollisionDetector : MonoBehaviour
         slider.value = health;
 
         fill.color = gradient.Evaluate(1f);
+        Debug.Log("Max Health changed to : " + slider.maxValue);
+    }
+
+    public void Heal(int amount) 
+    {
+        Debug.Log("Heal");
+        if (currentHealth >= maxHealth && maxHealth <= 7)
+        {
+            setMaxHealth(currentHealth + amount);
+            return;
+        }
+        else 
+        {
+            currentHealth += amount;
+            setHealth(currentHealth);
+            Debug.Log(currentHealth);
+
+        }
     }
 
     
