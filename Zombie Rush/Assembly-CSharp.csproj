@@ -71,6 +71,7 @@
     <Compile Include="Assets\Script\Powerup\GoFast.cs" />
     <Compile Include="Assets\Script\ZombieRagdoll.cs" />
     <Compile Include="Assets\Script\SpawnObject.cs" />
+    <Compile Include="Assets\Script\UI\GameOverScreen.cs" />
     <Compile Include="Assets\Supercyan Character Pack Zombie Sample\Scripts\ZombieCameraLogic.cs" />
     <Compile Include="Assets\Script\ZombieCollision.cs" />
     <Compile Include="Assets\Script\CameraController.cs" />

@@ -26,6 +26,8 @@ public class CollisionDetector : MonoBehaviour
     public static HighScoreManager instance;
     public GameObject Explosion;
 
+    public GameOverScreen gameoverScreen;
+
 
 
     void Start()
@@ -103,8 +105,9 @@ public class CollisionDetector : MonoBehaviour
             {
                 HighScoreManager.instance.SaveHighScore(Score);
             }
+            gameoverScreen.Setup(Score);
             Time.timeScale = 0f;
-            //TODO display game over screen
+            
         }
     }
     public void setHealth(int health) 
