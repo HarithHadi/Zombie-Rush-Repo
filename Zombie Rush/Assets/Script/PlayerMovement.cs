@@ -4,14 +4,21 @@ public enum SIDE { Left = 0, Mid = 1, Right = 2 }
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Lane Movement")]
     public float[] lanes = { -3f, 0f, 3f };
     public float laneSpeed = 18f;
 
+    [Header("Steering Realism")]
+    public float turnSpeed = 80f;
+    public float steeringSmooth = 5f;
+
     public SIDE currentSide = SIDE.Mid;
-    //public Animator carAnimator;
 
     private float targetX;
     private bool isMoving = false;
+
+    private float currentTurn;
+    private float targetTurn;
 
     void Start()
     {
@@ -25,43 +32,48 @@ public class PlayerMovement : MonoBehaviour
     {
         HandleInput();
         Move();
+        HandleSteering();
     }
 
     void HandleInput()
     {
-        if (isMoving) return;
-
-        // RIGHT key → move right
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (currentSide < SIDE.Right)
-            {
-                currentSide++;
-                StartLaneChange(true);
-            }
-        }
-
-        // LEFT key → move left
+        // Move LEFT
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             if (currentSide > SIDE.Left)
             {
                 currentSide--;
-                StartLaneChange(false);
+                StartLaneChange(-1);
+            }
+        }
+
+        // Move RIGHT
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if (currentSide < SIDE.Right)
+            {
+                currentSide++;
+                StartLaneChange(1);
             }
         }
     }
 
-    void StartLaneChange(bool right)
+    void StartLaneChange(int direction)
     {
         targetX = lanes[(int)currentSide];
         isMoving = true;
-        //carAnimator.speed = 1.8f;
-
-        //if (right)
-        //    carAnimator.Play("CarLeftDodge", 0,0f);
-        //else
-        //    carAnimator.Play("CarRightDodge", 0,0f);
+        int steerdir = 0;
+        
+        if (direction == 1)
+        {
+            steerdir = -1;
+        }
+        else if (direction == -1) 
+        {
+            steerdir = 1;
+        }
+        // Steering direction
+        targetTurn = steerdir * turnSpeed;
     }
 
     void Move()
@@ -78,9 +90,24 @@ public class PlayerMovement : MonoBehaviour
             transform.position = pos;
             isMoving = false;
 
-            // RESET animation
-            //carAnimator.SetBool("TurnLeft", false);
-            //carAnimator.SetBool("TurnRight", false);
+            // Reset steering when done
+            targetTurn = 0f;
         }
     }
+
+    void HandleSteering()
+    {
+        // Smoothly interpolate currentTurn toward targetTurn
+        currentTurn = Mathf.Lerp(currentTurn, targetTurn, steeringSmooth * Time.deltaTime * 1.5f);
+
+        // Base rotation is 180° Y
+        Quaternion baseRotation = Quaternion.Euler(0f, 180f, 0f);
+
+        // Apply steering rotation on top of base rotation
+        Quaternion steeringRotation = Quaternion.Euler(0f, currentTurn, currentTurn * 0.5f);
+
+
+        transform.rotation = baseRotation * steeringRotation;
+    }
+
 }

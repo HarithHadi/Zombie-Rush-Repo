@@ -32,6 +32,8 @@ public class GameOverScreen : MonoBehaviour
 
     public void ExitButton() 
     {
-        //Go to main menu
+        SceneManager.LoadScene("SampleScene");
     }
+
+
 }

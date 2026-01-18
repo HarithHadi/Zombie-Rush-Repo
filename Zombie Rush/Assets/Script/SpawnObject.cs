@@ -14,6 +14,7 @@ public class SpawnObject : MonoBehaviour
     private int[] lanes = { -3, 0, 3 };
     public int obstacleCount = 10;
     private int[] zPos = { 0, -30, -60, -90, -120};
+    private int[] hzPos = { 0, -20, -40, -60, -80, -100, 120 };
 
     void Start()
     {

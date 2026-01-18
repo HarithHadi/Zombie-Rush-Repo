@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
+
 
 
 public class CollisionDetector : MonoBehaviour
@@ -21,19 +22,23 @@ public class CollisionDetector : MonoBehaviour
 
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text HighscoreText;
-
+    public static bool PlayerDead = false;
 
     public static HighScoreManager instance;
     public GameObject Explosion;
 
     public GameOverScreen gameoverScreen;
+    public static bool GameIsPaused = false;
+    public PauseMenu pauseMenu;
 
+    public GameObject bloodsplatter;
 
 
     void Start()
     {
         setMaxHealth(maxHealth);
         Score = 0;
+        PlayerDead = false;
         if (HighScoreManager.instance != null)
         {
             HighscoreText.text = "HighScore: " + HighScoreManager.instance.getHighScore();
@@ -47,7 +52,11 @@ public class CollisionDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape) && !PlayerDead)
+        {
+            TogglePause();
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -89,6 +98,17 @@ public class CollisionDetector : MonoBehaviour
     {
         Score += amount;
         scoreText.text = "Score: " + Score.ToString();
+
+        // Show blood splatter and fade out
+        if (bloodsplatter != null)
+        {
+            Image bloodImage = bloodsplatter.GetComponent<Image>();
+            if (bloodImage != null)
+            {
+                StopCoroutine("BloodFade"); // Stop previous fade if running
+                StartCoroutine(BloodFade(bloodImage, 2f)); // 2-second fade
+            }
+        }
     }
 
     public void TakeDamage(int damage) 
@@ -99,7 +119,7 @@ public class CollisionDetector : MonoBehaviour
         
         if (currentHealth <= 0) 
         {
-            Debug.Log("Player Dead");
+            PlayerDead = true;
             
             if (HighScoreManager.instance != null) 
             {
@@ -144,5 +164,39 @@ public class CollisionDetector : MonoBehaviour
         }
     }
 
-    
+    void TogglePause() 
+    {
+        if (GameIsPaused)
+        {
+            pauseMenu.ResumeButton();
+        }
+        else 
+        {
+            pauseMenu.Setup(Score, HighScoreManager.instance.getHighScore());
+        }
+    }
+
+    private IEnumerator BloodFade(UnityEngine.UI.Image img, float duration)
+    {
+        float elapsed = 0f;
+
+        // Make fully visible
+        Color c = img.color;
+        c.a = 1f;
+        img.color = c;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, elapsed / duration);
+            c.a = alpha;
+            img.color = c;
+            yield return null;
+        }
+
+        // Ensure fully transparent at the end
+        c.a = 0f;
+        img.color = c;
+    }
+
 }
