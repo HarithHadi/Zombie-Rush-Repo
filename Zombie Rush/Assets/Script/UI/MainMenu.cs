@@ -6,8 +6,13 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject chooseDifficulty;
+    public LeaderBoardUI leaderboardUI;
     void Start()
     {
+        if (leaderboardUI != null) 
+        {
+            leaderboardUI.UpdateLeaderboardDisplay();
+        }
         
         AudioManager.Instance.Play(AudioManager.SoundType.Music_Menu);
         Time.timeScale = 1f;

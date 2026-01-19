@@ -87,7 +87,9 @@ public class CollisionDetector : MonoBehaviour
         {
             
             Debug.Log("Hit Zombie");
-            AddScore(1);
+            //int[] activeZpos = GameSettings.Difficulty == Difficulty.Easy ? zPos : hzPos;
+            int scoreValue = GameSettings.Difficulty == Difficulty.Easy ? 1 : 2;
+            AddScore(scoreValue);
             AudioManager.Instance.Play(AudioManager.SoundType.Hit);
             Zombie zombie  = other.gameObject.GetComponent<Zombie>();
             Vector3 force = new Vector3(0, 900f, 0f);
@@ -113,6 +115,35 @@ public class CollisionDetector : MonoBehaviour
         Score += amount;
         scoreText.text = "Score: " + Score.ToString();
 
+        StartCoroutine(ScalePulse());
+
+    }
+
+    private System.Collections.IEnumerator ScalePulse()
+    {
+        Vector3 originalScale = scoreText.transform.localScale;
+        Vector3 targetScale = originalScale * 1.3f; // 30% bigger
+        float duration = 0.2f;
+
+        // Scale up
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            scoreText.transform.localScale = Vector3.Lerp(originalScale, targetScale, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Scale back down
+        elapsed = 0f;
+        while (elapsed < duration)
+        {
+            scoreText.transform.localScale = Vector3.Lerp(targetScale, originalScale, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        scoreText.transform.localScale = originalScale;
     }
 
     public void TakeDamage(int damage) 

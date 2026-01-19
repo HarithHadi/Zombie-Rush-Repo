@@ -32,7 +32,7 @@ public class SpawnObject : MonoBehaviour
         {
             int ScoreIndex = Random.Range(0, availableLanes.Count);
             
-            Vector3 spawnPos = new Vector3(availableLanes[ScoreIndex], 0.65f, Zcurr);
+            Vector3 spawnPos = new Vector3(availableLanes[ScoreIndex], 0.50f, Zcurr);
 
             GameObject obj = Instantiate(zombies, transform);
 
@@ -58,7 +58,7 @@ public class SpawnObject : MonoBehaviour
                     }
                     else 
                     {
-                        Vector3 obstaclePos = new Vector3(lane, 0.65f, Zcurr);
+                        Vector3 obstaclePos = new Vector3(lane, 0.50f, Zcurr);
                         int prefabIndex = Random.Range(0, obstacles.Length);
 
                         GameObject obs = Instantiate(obstacles[prefabIndex], transform);
