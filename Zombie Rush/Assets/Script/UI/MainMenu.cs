@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
             leaderboardUI.UpdateLeaderboardDisplay();
         }
         
-        AudioManager.Instance.Play(AudioManager.SoundType.Music_Menu);
+        AudioManager.Instance.ChangeMusic(AudioManager.SoundType.Music_Menu);
         Time.timeScale = 1f;
         chooseDifficulty.SetActive(false);
     }
