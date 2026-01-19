@@ -66,7 +66,6 @@
     <Compile Include="Assets\CarAnimation.cs" />
     <Compile Include="Assets\Script\ScoreManager.cs" />
     <Compile Include="Assets\Script\Powerup\SpeedBoostManager.cs" />
-    <Compile Include="Assets\FastMesh\Scripts\SceneViewText.cs" />
     <Compile Include="Assets\Script\Powerup\HeartPowerup.cs" />
     <Compile Include="Assets\Script\UI\CarRealismAnim.cs" />
     <Compile Include="Assets\Script\Zombie\Zombie.cs" />
@@ -74,10 +73,14 @@
     <Compile Include="Assets\Script\UI\PauseMenu.cs" />
     <Compile Include="Assets\Script\ZombieRagdoll.cs" />
     <Compile Include="Assets\Script\SpawnObject.cs" />
+    <Compile Include="Assets\Script\AudioManager.cs" />
     <Compile Include="Assets\Script\UI\GameOverScreen.cs" />
     <Compile Include="Assets\Supercyan Character Pack Zombie Sample\Scripts\ZombieCameraLogic.cs" />
+    <Compile Include="Assets\Script\UI\MvemapMenu.cs" />
     <Compile Include="Assets\Script\ZombieCollision.cs" />
+    <Compile Include="Assets\Script\DifficultyManager.cs" />
     <Compile Include="Assets\Script\CameraController.cs" />
+    <Compile Include="Assets\Script\UI\GameSettings.cs" />
     <Compile Include="Assets\Script\HighScoreManager.cs" />
     <Compile Include="Assets\Script\CollisionDetector.cs" />
     <Compile Include="Assets\Script\PlayerMovement.cs" />

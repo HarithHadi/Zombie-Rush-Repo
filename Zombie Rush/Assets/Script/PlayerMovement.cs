@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public enum SIDE { Left = 0, Mid = 1, Right = 2 }
 
@@ -81,7 +82,8 @@ public class PlayerMovement : MonoBehaviour
         if (!isMoving) return;
 
         Vector3 pos = transform.position;
-        pos.x = Mathf.MoveTowards(pos.x, targetX, laneSpeed * Time.deltaTime);
+        float movespeed = DifficultyManager.instance.getMoveSpeed();
+        pos.x = Mathf.MoveTowards(pos.x, targetX, movespeed * Time.deltaTime);
         transform.position = pos;
 
         if (Mathf.Abs(pos.x - targetX) < 0.01f)
@@ -104,10 +106,12 @@ public class PlayerMovement : MonoBehaviour
         Quaternion baseRotation = Quaternion.Euler(0f, 180f, 0f);
 
         // Apply steering rotation on top of base rotation
-        Quaternion steeringRotation = Quaternion.Euler(0f, currentTurn, currentTurn * 0.5f);
+        Quaternion steeringRotation = Quaternion.Euler(0f, 0f, currentTurn * 0.3f);
 
 
         transform.rotation = baseRotation * steeringRotation;
     }
+
+    
 
 }

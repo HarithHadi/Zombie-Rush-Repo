@@ -27,6 +27,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void ResumeButton()
     {
+        AudioManager.Instance.ResumeMusic();
         Time.timeScale = 1f;
         gameObject.SetActive(false);
         hud.SetActive(true);

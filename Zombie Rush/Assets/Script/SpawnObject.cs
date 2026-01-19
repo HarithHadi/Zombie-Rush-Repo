@@ -13,8 +13,8 @@ public class SpawnObject : MonoBehaviour
     [Header("Settings")]
     private int[] lanes = { -3, 0, 3 };
     public int obstacleCount = 10;
-    private int[] zPos = { 0, -30, -60, -90, -120};
-    private int[] hzPos = { 0, -20, -40, -60, -80, -100, 120 };
+    private int[] zPos = {0, -30, -60, -90, -120};
+    private int[] hzPos = { 40 ,20 ,0, -20, -40, -60, -80, -100, 120 };
 
     void Start()
     {
@@ -24,9 +24,11 @@ public class SpawnObject : MonoBehaviour
 
     public void SpawnItems()
     {
+
+        int[] activeZpos = GameSettings.Difficulty == Difficulty.Easy ? zPos : hzPos;
         List<int> availableLanes = new List<int>(lanes);
 
-        foreach (int Zcurr in zPos) 
+        foreach (int Zcurr in activeZpos) 
         {
             int ScoreIndex = Random.Range(0, availableLanes.Count);
             

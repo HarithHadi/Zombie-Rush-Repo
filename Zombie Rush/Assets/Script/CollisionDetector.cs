@@ -26,6 +26,7 @@ public class CollisionDetector : MonoBehaviour
 
     public static HighScoreManager instance;
     public GameObject Explosion;
+    
 
     public GameOverScreen gameoverScreen;
     public static bool GameIsPaused = false;
@@ -33,12 +34,15 @@ public class CollisionDetector : MonoBehaviour
 
     public GameObject bloodsplatter;
 
+    
+
 
     void Start()
     {
         setMaxHealth(maxHealth);
         Score = 0;
         PlayerDead = false;
+        AudioManager.Instance.ChangeMusic(AudioManager.SoundType.Music_Menu);
         if (HighScoreManager.instance != null)
         {
             HighscoreText.text = "HighScore: " + HighScoreManager.instance.getHighScore();
@@ -69,8 +73,10 @@ public class CollisionDetector : MonoBehaviour
             }
             else 
             {
+                AudioManager.Instance.Play(AudioManager.SoundType.Obstacle);
                 Debug.Log("Hit Obstacle");
-                Instantiate(Explosion, other.transform.position, transform.rotation);
+                GameObject fx = Instantiate(Explosion, other.transform.position, transform.rotation);
+                StartCoroutine(DestroyWhenDone(fx));
                 TakeDamage(1);
             }
 
@@ -79,13 +85,21 @@ public class CollisionDetector : MonoBehaviour
 
         if (other.gameObject.CompareTag("Zombie"))
         {
+            
             Debug.Log("Hit Zombie");
             AddScore(1);
+            AudioManager.Instance.Play(AudioManager.SoundType.Hit);
             Zombie zombie  = other.gameObject.GetComponent<Zombie>();
             Vector3 force = new Vector3(0, 900f, 0f);
             Vector3 hitPoint = zombie.transform.position + Vector3.up * 3f;
 
+            GameObject fx =  Instantiate(bloodsplatter, other.transform.position, transform.rotation);
+            StartCoroutine(DestroyWhenDone(fx));
+            
+
+
             zombie.TriggerRagdoll(force, hitPoint);
+            
         }
     }
 
@@ -99,16 +113,6 @@ public class CollisionDetector : MonoBehaviour
         Score += amount;
         scoreText.text = "Score: " + Score.ToString();
 
-        // Show blood splatter and fade out
-        if (bloodsplatter != null)
-        {
-            Image bloodImage = bloodsplatter.GetComponent<Image>();
-            if (bloodImage != null)
-            {
-                StopCoroutine("BloodFade"); // Stop previous fade if running
-                StartCoroutine(BloodFade(bloodImage, 2f)); // 2-second fade
-            }
-        }
     }
 
     public void TakeDamage(int damage) 
@@ -119,6 +123,8 @@ public class CollisionDetector : MonoBehaviour
         
         if (currentHealth <= 0) 
         {
+            AudioManager.Instance.PauseMusic();
+            
             PlayerDead = true;
             
             if (HighScoreManager.instance != null) 
@@ -172,31 +178,20 @@ public class CollisionDetector : MonoBehaviour
         }
         else 
         {
+            AudioManager.Instance.PauseMusic();
             pauseMenu.Setup(Score, HighScoreManager.instance.getHighScore());
         }
     }
 
-    private IEnumerator BloodFade(UnityEngine.UI.Image img, float duration)
+    IEnumerator DestroyWhenDone(GameObject fx)
     {
-        float elapsed = 0f;
+        ParticleSystem ps = fx.GetComponent<ParticleSystem>();
 
-        // Make fully visible
-        Color c = img.color;
-        c.a = 1f;
-        img.color = c;
+        yield return new WaitUntil(() => !ps.IsAlive(true));
 
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float alpha = Mathf.Lerp(1f, 0f, elapsed / duration);
-            c.a = alpha;
-            img.color = c;
-            yield return null;
-        }
-
-        // Ensure fully transparent at the end
-        c.a = 0f;
-        img.color = c;
+        Destroy(fx);
     }
+
+
 
 }

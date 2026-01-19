@@ -30,6 +30,7 @@ public class HeartPowerup : MonoBehaviour
     {
         //Cool effect
         Instantiate(pickupEffect, player.transform.position, transform.rotation);
+        AudioManager.Instance.Play(AudioManager.SoundType.Heart);
 
         //Effect of the powerup
         CollisionDetector playerstats = player.GetComponent<CollisionDetector>();

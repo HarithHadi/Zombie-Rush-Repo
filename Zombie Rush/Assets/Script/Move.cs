@@ -11,6 +11,7 @@ public class Move : MonoBehaviour
     {
         if (SpeedBoostManager.instance != null) 
         {
+            Debug.Log("Boost enabled");
             speed = SpeedBoostManager.getCurrentSped();
         }
         else 
@@ -22,9 +23,9 @@ public class Move : MonoBehaviour
     
     void Update()
     {
-        
-        //Add into X to make the game faster
-        transform.position += Vector3.forward * 25 * speed * Time.deltaTime;    
+
+        float currentSpeed = DifficultyManager.instance.GetSpeed();
+        transform.position += Vector3.forward * currentSpeed * speed * Time.deltaTime;    
     }
 
     private void OnTriggerEnter(Collider other)

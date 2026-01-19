@@ -57,6 +57,7 @@ public class SpeedBoostManager : MonoBehaviour
         // cool effect 
         if (activeBoostEffect == null)
         {
+            AudioManager.Instance.Play(AudioManager.SoundType.Speed);
             activeBoostEffect = Instantiate(pickupEffect, boostpos.transform);
             activeBoostEffect.transform.SetParent(playerpos, true);
         }

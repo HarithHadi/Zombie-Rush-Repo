@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject chooseDifficulty;
     void Start()
     {
+        
+        AudioManager.Instance.Play(AudioManager.SoundType.Music_Menu);
         Time.timeScale = 1f;
+        chooseDifficulty.SetActive(false);
     }
 
     // Update is called once per frame
@@ -19,12 +22,28 @@ public class MainMenu : MonoBehaviour
 
     public void PlayButton() 
     {
-        SceneManager.LoadScene("Default Scene");
-        Time.timeScale = 1.0f;
+        chooseDifficulty.SetActive(true);
+        gameObject.SetActive(false);
+        
     }
 
     public void QuitButton() 
     {
         Application.Quit();
+    }
+
+    public void EasyMode() 
+    {
+        GameSettings.Difficulty = Difficulty.Easy;
+        SceneManager.LoadScene("Default Scene");
+        Time.timeScale = 1.0f;
+        
+
+    }
+    public void HardMode()
+    {
+        GameSettings.Difficulty = Difficulty.Hard;
+        SceneManager.LoadScene("Default Scene");
+        Time.timeScale = 1.0f;
     }
 }
